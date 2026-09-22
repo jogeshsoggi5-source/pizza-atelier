@@ -21,19 +21,19 @@ export const Route = createFileRoute("/menu")({
       {
         name: "description",
         content:
-          "Explore our signature wood-fired pizzas, antipasti, drinks, and desserts. Handcrafted with fresh, locally sourced ingredients.",
+          "Explore our signature wood-fired pizzas and antipasti. Handcrafted with fresh, locally sourced ingredients.",
       },
       { property: "og:title", content: "Menu — Pizza Atelier" },
       {
         property: "og:description",
-        content: "Signature wood-fired pizzas, antipasti, drinks, and dolci.",
+        content: "Signature wood-fired pizzas and antipasti.",
       },
     ],
   }),
   component: MenuPage,
 });
 
-const otherCategories: MenuCategory[] = ["sides", "drinks", "desserts"];
+const otherCategories: MenuCategory[] = ["sides"];
 
 function SimpleItemRow({ item }: { item: MenuItem }) {
   const { addItem } = useCart();
