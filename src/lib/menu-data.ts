@@ -4,6 +4,8 @@ import pepperoni from "@/assets/pizza-pepperoni.jpg";
 import burrata from "@/assets/pizza-burrata.jpg";
 import mediterranean from "@/assets/pizza-mediterranean.jpg";
 import bbq from "@/assets/pizza-bbq.jpg";
+import menuWine from "@/assets/menu-wine.jpg";
+import menuTiramisu from "@/assets/menu-tiramisu.jpg";
 
 export type MenuCategory = "signature" | "sides" | "drinks" | "desserts";
 
@@ -120,6 +122,7 @@ export const menuItems: MenuItem[] = [
     description: "A round, cherry-forward Tuscan red — the pizza's best friend.",
     price: 9,
     category: "drinks",
+    image: menuWine,
   },
   {
     id: "tiramisu",
@@ -127,6 +130,7 @@ export const menuItems: MenuItem[] = [
     description: "Espresso-soaked savoiardi, mascarpone cream, cocoa dust.",
     price: 8,
     category: "desserts",
+    image: menuTiramisu,
   },
   {
     id: "panna-cotta",

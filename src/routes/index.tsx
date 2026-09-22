@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { Flame, Leaf, Quote, Star, Truck, Wheat } from "lucide-react";
 
@@ -9,7 +10,7 @@ import galleryOven from "@/assets/gallery-oven.jpg";
 import galleryCustomers from "@/assets/gallery-customers.jpg";
 import { Button } from "@/components/ui/button";
 import { PizzaCard } from "@/components/site/PizzaCard";
-import { HeroVideo } from "@/components/site/HeroVideo";
+import { HeroSlideshow } from "@/components/site/HeroSlideshow";
 import { signaturePizzas } from "@/lib/menu-data";
 
 export const Route = createFileRoute("/")({
@@ -82,23 +83,23 @@ const reviews = [
 ];
 
 function Index() {
+  const [heroCaption, setHeroCaption] = useState("Wood-Fired Pizza");
+
   return (
     <div>
       {/* Hero */}
       <section className="relative flex min-h-[92vh] items-center justify-center overflow-hidden">
-        <HeroVideo />
+        <HeroSlideshow onSlideChange={setHeroCaption} />
         <div className="overlay-hero absolute inset-0" />
-        <div className="animate-fade-up relative z-10 mx-auto max-w-3xl px-4 py-24 text-center">
-          <p className="eyebrow">Wood-Fired • Handcrafted • Brooklyn</p>
-          <h1 className="mt-4 font-display text-5xl font-bold leading-tight text-cream md:text-7xl">
-            Crafted Like Art.{" "}
+        <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 text-center">
+          <p key={heroCaption} className="eyebrow animate-slide-up tracking-widest">
+            {heroCaption} • Handcrafted • Brooklyn
+          </p>
+          <h1 className="animate-slide-up-delay-1 mt-6 font-display text-5xl font-bold leading-tight text-cream md:text-8xl md:leading-tight">
+            <span className="block">Crafted Like Art.</span>
             <span className="italic text-gold">Baked with Passion.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/85 md:text-lg">
-            Every pizza is handmade using authentic ingredients and traditional
-            techniques.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+          <div className="animate-slide-up-delay-3 mt-10 flex flex-wrap items-center justify-center gap-4">
             <Button asChild size="lg" className="px-8 text-base">
               <Link to="/menu">Explore Menu</Link>
             </Button>
