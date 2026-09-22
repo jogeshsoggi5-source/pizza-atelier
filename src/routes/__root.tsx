@@ -7,13 +7,14 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CartProvider } from "@/lib/cart-context";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
+import { WelcomeSplash } from "@/components/site/WelcomeSplash";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -130,10 +131,24 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const splashShown = sessionStorage.getItem("splashShown");
+    if (splashShown) {
+      setShowSplash(false);
+    }
+  }, []);
+
+  const handleSplashComplete = () => {
+    sessionStorage.setItem("splashShown", "true");
+    setShowSplash(false);
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
       <CartProvider>
+        {showSplash && <WelcomeSplash onComplete={handleSplashComplete} />}
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">

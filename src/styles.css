@@ -156,6 +156,18 @@
   animation: fade-up 0.7s ease-out both;
 }
 
+@utility animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+@utility animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+@utility animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
 @keyframes ken-burns {
   from {
     transform: scale(1);
