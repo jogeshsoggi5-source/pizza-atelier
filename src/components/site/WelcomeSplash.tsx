@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import splashSlice from "@/assets/splash-pizza-slice.jpg";
 
-const SPLASH_DURATION = 3600;
+const SPLASH_DURATION = 5000;
 
 export function WelcomeSplash({ onComplete }: { onComplete: () => void }) {
   const [isExiting, setIsExiting] = useState(false);
@@ -47,7 +47,10 @@ export function WelcomeSplash({ onComplete }: { onComplete: () => void }) {
         </p>
 
         <div className="mt-10 h-0.5 w-48 overflow-hidden rounded-full bg-cream/20">
-          <div className="animate-progress h-full bg-gold" />
+          <div
+            className="animate-progress h-full bg-gold"
+            style={{ animationDuration: `${SPLASH_DURATION}ms` }}
+          />
         </div>
       </div>
     </div>
