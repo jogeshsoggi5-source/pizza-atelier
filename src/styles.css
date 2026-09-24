@@ -206,6 +206,48 @@
   animation: progress 3.6s ease-in-out both;
 }
 
+@keyframes draw-ring {
+  from {
+    stroke-dasharray: 189;
+    stroke-dashoffset: 189;
+  }
+  to {
+    stroke-dasharray: 189;
+    stroke-dashoffset: 0;
+  }
+}
+
+@utility animate-draw-ring {
+  animation: draw-ring 1.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: center;
+  transform: rotate(-90deg);
+}
+
+@keyframes glow-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@utility splash-glow {
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 42%,
+    oklch(0.55 0.13 55 / 0.4),
+    transparent 70%
+  );
+  animation: glow-breathe 6s ease-in-out infinite;
+}
+
+@utility splash-vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, oklch(0.18 0.01 55 / 0.75));
+}
+
 @keyframes ken-burns {
   from {
     transform: scale(1);
@@ -287,5 +329,18 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-draw-ring,
+  .splash-glow,
+  .animate-ken-burns {
+    animation: none;
+  }
+
+  .animate-draw-ring {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
   }
 }
